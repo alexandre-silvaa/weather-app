@@ -25,6 +25,11 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
+      - name: Criar arquivo .env.prod
+        run: |
+          echo "VITE_WEATHER_API_URL=${{ secrets.VITE_WEATHER_API_URL }}" >> .env.prod
+          echo "VITE_WEATHER_API_KEY=${{ secrets.VITE_WEATHER_API_KEY }}" >> .env.prod
+
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
