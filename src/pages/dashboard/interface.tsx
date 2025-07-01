@@ -1,3 +1,6 @@
+import { IGetWeatherResponse } from '../../shared/service/weather/interface';
+
 export interface IDashboardPresentation {
-  title: string;
+  loading: boolean;
+  weather?: IGetWeatherResponse;
 }
