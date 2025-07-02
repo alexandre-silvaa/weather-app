@@ -2,6 +2,7 @@ import { Typography } from '@mui/material';
 import { IDashboardPresentation } from './interface';
 import { MapPin } from 'lucide-react';
 import moment from 'moment';
+import { getWeatherIcon } from '../../shared/utils/functions';
 
 export default function DashboardPresentation(state: IDashboardPresentation) {
   const { weather } = state;
@@ -18,13 +19,7 @@ export default function DashboardPresentation(state: IDashboardPresentation) {
         <Typography fontSize={14}>{moment().format('MMMM D YYYY, h:mm a')}</Typography>
       </div>
 
-      <div className="flex items-center justify-center">
-        <img
-          className="object-fill self-center"
-          src={`http://openweathermap.org/img/wn/${weather?.weather[0].icon}@4x.png`}
-          alt={weather?.weather[0].description}
-        />
-      </div>
+      <div className="flex items-center justify-center">{getWeatherIcon(weather?.weather[0].icon)}</div>
 
       <div className="flex flex-col items-center mt-4">
         <Typography fontSize={80} fontWeight={500} className="text-center">
