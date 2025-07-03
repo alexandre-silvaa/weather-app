@@ -1,6 +1,6 @@
 import { Cloud, CloudFog, CloudHail, CloudMoon, CloudMoonRain, CloudRainWind, CloudSun, CloudSunRain, Cloudy, Moon, Snowflake, Sun } from 'lucide-react';
 
-const ICON_SIZE = 200;
+const ICON_SIZE = 20;
 
 export const WEATHER_ICONS = {
   '01d': <Sun color="#FFBF00" strokeWidth={1} size={ICON_SIZE} />,
