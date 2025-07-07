@@ -23,6 +23,7 @@ export default function DashboardContainer(): React.JSX.Element {
       setWeather(data);
     } catch (error) {
       console.error(error);
+      setWeather(undefined);
     } finally {
       setLoading(false);
     }
@@ -36,6 +37,7 @@ export default function DashboardContainer(): React.JSX.Element {
       const data = await getCurrentWeatherByCity({ q: city });
       setWeather(data);
     } catch (error) {
+      setWeather(undefined);
       console.error(error);
     } finally {
       setLoading(false);
