@@ -26,7 +26,7 @@ export default function DashboardPresentation(state: IDashboardPresentation) {
             </Typography>
           </div>
         )}
-        {(!weather || loading) && (
+        {weather && (
           <>
             <div className="flex flex-col items-center justify-center my-4 gap-3">
               <Skeleton width={275} height={42} loading={loading}>
