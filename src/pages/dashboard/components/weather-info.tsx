@@ -8,7 +8,7 @@ type WeatherInfoProps = {
 
 export default function WeatherInfo({ icon, description }: Readonly<WeatherInfoProps>): React.JSX.Element {
   return (
-    <div className="flex items-center justify-center gap-2 w-[100px] max-w-[100px]">
+    <div className="flex items-center justify-center gap-2 w-[125px] max-w-[125px]">
       {icon}
       <Typography fontSize={22} fontWeight={500} className="text-white inline-block ml-1">
         {description}
