@@ -10,11 +10,11 @@ export default function DashboardPresentation(state: IDashboardPresentation) {
   const { weather } = state;
 
   return (
-    <div className="flex flex-col h-screen w-full p-10 justify-center bg-gradient-to-b from-[#594cee] to-[#8dd0f5]">
+    <div className="flex flex-col h-screen max-h-screen w-full p-10 justify-center bg-gradient-to-b from-[#594cee] to-[#8dd0f5]">
       <div className="p-10 shadow-lg self-center bg-[#5c54ed] rounded-xl">
-        <div className="flex flex-row items-center gap-5 border-b border-white pb-5">
+        <div className="flex flex-row items-center gap-2 border-b border-white pb-5">
           <TextField placeholder="Procure por cidade" />
-          <IconButton className="w-10 h-10 *:focus:outline-none" onClick={() => {}}>
+          <IconButton className="*:focus:outline-none" onClick={() => {}}>
             <Search size={20} color="#b5b7bd" />
           </IconButton>
         </div>
