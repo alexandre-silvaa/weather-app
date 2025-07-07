@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getCurrentWeather } from '../../shared/service/weather/weather';
+import { getCurrentWeather, getCurrentWeatherByCity } from '../../shared/service/weather/weather';
 import DashboardPresentation from './presentation';
 import { IGetWeatherResponse } from '../../shared/service/weather/interface';
 
@@ -7,6 +7,7 @@ export default function DashboardContainer(): React.JSX.Element {
   const [position, setPosition] = useState<GeolocationPosition>();
   const [weather, setWeather] = useState<IGetWeatherResponse>();
   const [loading, setLoading] = useState<boolean>(true);
+  const [city, setCity] = useState<string>();
 
   const getCurrentPosition = () => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -27,6 +28,24 @@ export default function DashboardContainer(): React.JSX.Element {
     }
   };
 
+  const getWeatherByCity = async (city?: string) => {
+    if (!city) return;
+
+    setLoading(true);
+    try {
+      const data = await getCurrentWeatherByCity({ q: city });
+      setWeather(data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCity(event.target.value);
+  };
+
   useEffect(() => {
     if (!position) return;
     getUserLocation();
@@ -38,5 +57,5 @@ export default function DashboardContainer(): React.JSX.Element {
     getCurrentPosition();
   }, []);
 
-  return <DashboardPresentation loading={loading} weather={weather} />;
+  return <DashboardPresentation loading={loading} weather={weather} getWeatherByCity={getWeatherByCity} handleCityChange={handleCityChange} city={city} />;
 }

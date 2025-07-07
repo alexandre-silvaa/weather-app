@@ -1,12 +1,12 @@
-import { TextField as MUITextField } from '@mui/material';
+import { TextField as MUITextField, TextFieldProps as MUITextFieldProps } from '@mui/material';
 
 type TextFieldProps = {
   readonly variant?: 'filled' | 'outlined' | 'standard';
   readonly placeholder?: string;
   readonly className?: string;
-};
+} & MUITextFieldProps;
 
-export default function TextField({ variant, placeholder, className }: Readonly<TextFieldProps>) {
+export default function TextField({ variant, placeholder, className, ...rest }: Readonly<TextFieldProps>) {
   return (
     <MUITextField
       variant={variant}
@@ -26,6 +26,7 @@ export default function TextField({ variant, placeholder, className }: Readonly<
           height: '48px',
         },
       }}
+      {...rest}
     />
   );
 }

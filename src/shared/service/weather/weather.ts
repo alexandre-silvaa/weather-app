@@ -1,4 +1,4 @@
-import { IGetWeatherReqParams, IGetWeatherResponse } from './interface';
+import { IGetWeatherByCityReqParams, IGetWeatherReqParams, IGetWeatherResponse } from './interface';
 import { api } from '../instance';
 
 const getCurrentWeather = async (params: IGetWeatherReqParams): Promise<IGetWeatherResponse> => {
@@ -6,4 +6,9 @@ const getCurrentWeather = async (params: IGetWeatherReqParams): Promise<IGetWeat
   return data;
 };
 
-export { getCurrentWeather };
+const getCurrentWeatherByCity = async (params: IGetWeatherByCityReqParams): Promise<IGetWeatherResponse> => {
+  const { data } = await api.get('/weather', { params: { ...params, lang: 'pt_br', units: 'metric' } });
+  return data;
+};
+
+export { getCurrentWeather, getCurrentWeatherByCity };

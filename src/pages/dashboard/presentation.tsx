@@ -7,14 +7,14 @@ import moment from 'moment';
 import WeatherInfo from './components/weather-info';
 
 export default function DashboardPresentation(state: IDashboardPresentation) {
-  const { weather } = state;
+  const { weather, city, handleCityChange } = state;
 
   return (
-    <div className="flex flex-col h-screen max-h-screen w-full p-10 justify-center bg-gradient-to-b from-[#594cee] to-[#8dd0f5]">
-      <div className="p-10 shadow-lg self-center bg-[#5c54ed] rounded-xl">
+    <div className="flex flex-col h-screen max-h-screen w-full p-10 justify-center bg-gradient-to-b from-[#594cee] to-[#8dd0f5] ">
+      <div className="p-10 shadow-lg self-center bg-[#5c54ed] rounded-xl md:w-md">
         <div className="flex flex-row items-center gap-2 border-b border-white pb-5">
-          <TextField placeholder="Procure por cidade" />
-          <IconButton className="*:focus:outline-none" onClick={() => {}}>
+          <TextField placeholder="Procure por cidade" value={city} onChange={handleCityChange} />
+          <IconButton className="*:focus:outline-none" onClick={() => state.getWeatherByCity(city)}>
             <Search size={20} color="#b5b7bd" />
           </IconButton>
         </div>
@@ -54,12 +54,12 @@ export default function DashboardPresentation(state: IDashboardPresentation) {
           </div>
           <div className="flex flex-row gap-2 w-full justify-between">
             <WeatherInfo
-              icon={<Droplet size={22} color="#36B5F5" />}
+              icon={<Droplet size={22} color="#27BEF8" />}
               description={weather?.main?.humidity !== undefined ? `${Math.round(+weather.main.humidity)}%` : '--'}
             />
             <span className="text-white text-xl font-bold flex items-center h-full">|</span>
             <WeatherInfo
-              icon={<Wind size={22} color="#36B5F5" />}
+              icon={<Wind size={22} color="#998EED" />}
               description={weather?.wind?.speed !== undefined ? `${Math.round(+weather.wind.speed)} m/s` : '--'}
             />
           </div>

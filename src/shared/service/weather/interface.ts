@@ -3,6 +3,10 @@ export interface IGetWeatherReqParams {
   lon: string;
 }
 
+export interface IGetWeatherByCityReqParams {
+  q: string;
+}
+
 export interface IGetWeatherResponse {
   coord: Coord;
   weather: Weather[];
