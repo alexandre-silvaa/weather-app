@@ -19,14 +19,14 @@ export default function DashboardPresentation(state: IDashboardPresentation) {
             <Search size={20} color="#b5b7bd" />
           </IconButton>
         </div>
-        {!weather && (
+        {!weather && !loading && (
           <div className="flex flex-col items-center justify-center mt-8">
             <Typography fontSize={16} color="white" fontWeight={500} className="text-center">
               Nenhum resultado encontrado
             </Typography>
           </div>
         )}
-        {weather && (
+        {(!weather || loading) && (
           <>
             <div className="flex flex-col items-center justify-center my-4 gap-3">
               <Skeleton width={275} height={42} loading={loading}>
